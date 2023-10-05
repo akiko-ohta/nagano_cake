@@ -10,28 +10,45 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <% if admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
+  <body class="d-flex flex-column">
+    <header class="shadow-sm mb-3">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">Nageno Cake</a>
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <% if admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to destroy_admin_session_path, method: :delete, class: 'text-decoration-none text-light btn-default' do%>
+                    <span>ログアウト</span>
+                  <% end %>
+                </li>
 
-    <% elsif customer_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
+              <% elsif customer_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to destroy_customer_session_path, method: :delete, class: 'text-decoration-none text-light btn-default' do%>
+                    <span>ログアウト</span>
+                  <% end %>
+                </li>
 
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
-  </header>
+              <% else %>
+                  <li>
+                    <%= link_to "新規登録", new_customer_registration_path %>
+                  </li>
+                  <li>
+                    <%= link_to "ログイン", new_customer_session_path %>
+                  </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-  <body>
     <%= yield %>
+50
   </body>
 </html>
