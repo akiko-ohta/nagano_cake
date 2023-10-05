@@ -1,32 +1,15 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'genres/new'
-    get 'genres/create'
-    get 'genres/edit'
-    get 'genres/update'
-    get 'genres/show'
-    get 'genres/index'
-    get 'genres/unvailable'
-  end
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/update'
-  end
-  namespace :admin do
-    get 'homes/top'
+    get "/admin" => "homes/top", as: "homes/top"
+    resources :items, only: [:new, :create, :edit, :update, :index, :show]
+    resources :customers, only: [:index, :show, :edit ,:update]
+    resources :order, only, [:show]
+    resources :genres, only, [:new, :create, :edit, :update, :index, :show]
+    resources :genres do
+      collection do
+        patch "unavailable"
+      end
+    end
   end
 
  scope module: :public do
@@ -39,6 +22,20 @@ Rails.application.routes.draw do
       patch "withdraw"
     end
   end
+  resources :cart_items, only: [:index, :create, :update, :destroy]
+  resources :cart_items do
+    collection do
+      delete "destroy_all"
+    end
+  end
+  resources :orders, onle: [:new, :create, :index, :show]
+  resources :orders do
+    collection do
+      post "confirm"
+      get "complete"
+    end
+  end
+  resources :addresses
   get 'homes/top'
   get '/about' => "homes#about", as: "homes/about"
 end
