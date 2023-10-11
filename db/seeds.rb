@@ -8,5 +8,5 @@
 
 Admin.create!(
   email: "0249aki@gmail.com",
-  password: "akimaru0429"
+  password: "k9RyBvwe"
   )
