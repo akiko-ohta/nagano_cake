@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
   resources :items, only: [:index, :show]
-  resources :customers, only: [:edit, :update]
+  resource :customers, only: [:edit, :update]
   get "customers/my_page" => "customers#show", as: "customers/show"
   resources :customers do
     collection do

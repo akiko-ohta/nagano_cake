@@ -22,7 +22,7 @@
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
                 <li class="nav-item" style="margin-right: 10px;">
-                  <%= link_to admin_items_path, class: 'text-decoration-nonetext-dark  btn-default' do %>
+                  <%= link_to admin_items_path, class: 'text-decoration-none text-dark  btn-default' do %>
                     <span>商品一覧</span>
                   <% end %>
                 </li>
@@ -32,7 +32,7 @@
                   <% end %>
                 </li>
                 <li class="nav-item" style="margin-right: 10px;">
-                  <%= link_to admin_top_path, class: 'text-decoration-none text-dark btn-default' do %>
+                  <%= link_to admin_homes_top_path, class: 'text-decoration-none text-dark btn-default' do %>
                     <span>注文履歴一覧</span>
                   <% end %>
                 </li>

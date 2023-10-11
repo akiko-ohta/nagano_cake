@@ -1,2 +1,14 @@
-<h1>Admin::Genres#index</h1>
-<p>Find me in app/views/admin/genres/index.html.erb</p>
+<h2>ジャンル一覧・追加</h2>
+<%= form_with model: [admin, @genre] do |f| %>
+  <P>ジャンル名</P>
+  <%= f.text_field :name %>
+  <%= f.submit '新規登録' %>
+<% end %>
+
+<% @genres.each do |genre| %>
+ <p>ジャンル</p>
+ <spnan><%= genre.name %></spnan>
+ <%= link_to edit_admin_genre_path(genre.id), class: 'text-decoration-none text-light  btn-success' do %>
+   <span>編集する</span>
+ <% end %>
+<% end %>
