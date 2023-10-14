@@ -1,6 +1,8 @@
 <h2>商品一覧</h2>
- <%= @items.each do |item| %>
-  <%= image_tag @item.get_image(50,50) %>
-  <%= @item.name %>
-  <%= @item.price %>
+ <% @items.each do |item| %>
+ <%= link_to item_path(item.id), class: 'text-dark btn-default' do %>
+  <%= image_tag item.get_image(100,100) %>
+  <%= item.name %>
+  <%= item.price %>
+  <% end %>
  <% end %>

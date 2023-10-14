@@ -5,3 +5,8 @@
 <%= @item.introduction %>
 <p>（税抜価格）</p>
 <%= @item.price %>
+<%= form_with model: @cart_item do |f| %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.select :amount, *[1..10] %>
+  <%= f.submit 'カートに入れる' %>
+<% end %>
