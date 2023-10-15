@@ -3,6 +3,6 @@
  <%= link_to item_path(item.id), class: 'text-dark btn-default' do %>
   <%= image_tag item.get_image(100,100) %>
   <%= item.name %>
-  <%= item.price %>
+  <p>￥<%= item.with_tax_price %></p>
   <% end %>
  <% end %>

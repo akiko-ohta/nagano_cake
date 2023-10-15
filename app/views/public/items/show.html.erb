@@ -1,10 +1,7 @@
-<%= image_tag @item.get_image(50,50) %>
-<p>商品名</p>
+<%= image_tag @item.get_image(100,100) %>
 <%= @item.name %>
-<p>商品説明</p>
 <%= @item.introduction %>
-<p>（税抜価格）</p>
-<%= @item.price %>
+<p>￥<%= @item.with_tax_price %></p>
 <%= form_with model: @cart_item do |f| %>
   <%= f.hidden_field :item_id, :value => @item.id %>
   <%= f.select :amount, *[1..10] %>
