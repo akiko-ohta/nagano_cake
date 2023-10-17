@@ -6,6 +6,7 @@
   <%= image_tag cart_item.item.get_image(50,50) %>
   <%= cart_item.item.name %>
   <%= cart_item.item.with_tax_price %>
+  <%= cart_item.select :amount, *[1..10], { selected: cart_item.amount} %>
   <%= cart_item.subtotal %>
   <%= @total %>
   <%= link_to cart_item_path(cart_item.id), method: :delete, class: 'btn text-decoration-none text-light btn-danger btn-sm' do %>

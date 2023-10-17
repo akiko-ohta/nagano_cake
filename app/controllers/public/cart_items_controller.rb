@@ -14,14 +14,21 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    CartItem.destroy_all
+    current_user.cart_items.destroy_all
     redirect_to cart_items_path
   end
 
   def create
+    cart_item = CartItem.find_by(imte_id: params[:item_id])
+    if cart_item.item_id == @cart_item.item_id
+      cart_item.amount + @cart_item.amount
+      cart_item.update
+      redirect_to cart_items_path
+    else
     cart_item = CartItem.new(cart_item_params)
     cart_item.save
     redirect_to cart_items_path
+    end
   end
 
   private
