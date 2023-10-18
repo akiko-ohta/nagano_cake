@@ -1,3 +1,4 @@
+<div>
 <%= image_tag @item.get_image(100,100) %>
 <%= @item.name %>
 <%= @item.introduction %>
@@ -7,3 +8,4 @@
   <%= f.select :amount, *[1..10] %>
   <%= f.submit 'カートに入れる' %>
 <% end %>
+</div>

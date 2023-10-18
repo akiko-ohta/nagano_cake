@@ -1,3 +1,4 @@
+<div>
 <h2>商品一覧</h2>
  <% @items.each do |item| %>
  <%= link_to item_path(item.id), class: 'text-dark btn-default' do %>
@@ -6,3 +7,4 @@
   <p>￥<%= item.with_tax_price %></p>
   <% end %>
  <% end %>
+ </div>
