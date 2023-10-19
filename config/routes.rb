@@ -20,12 +20,8 @@ Rails.application.routes.draw do
       patch "withdraw"
     end
   end
-  resources :cart_items, only: [:index, :create, :update, :destroy]
-  resources :cart_items do
-    collection do
-      delete "destroy_all"
-    end
-  end
+  delete "cart_items/dastroy_all" => "cart_items#destroy_all"
+  resources :cart_items
   resources :orders, only: [:new, :create, :index, :show]
   resources :orders do
     collection do

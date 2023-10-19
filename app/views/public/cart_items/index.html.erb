@@ -1,13 +1,13 @@
 <div>
 <h2>ショッピングカート</h2>
-  <%= link_to destroy_all_cart_items_path, method: :delete, class: 'btn text-decoration-none text-light btn-danger btn-sm' do %>
+  <%= link_to cart_items_dastroy_all_path, method: :delete, class: 'btn text-decoration-none text-light btn-danger btn-sm' do %>
       <span>カートを空にする</span>
   <% end %>
 <% @cart_items.each do |cart_item| %>
   <%= image_tag cart_item.item.get_image(50,50) %>
   <%= cart_item.item.name %>
   <%= cart_item.item.with_tax_price %>
-    <%= form_with model: @cart_item do |f| %>
+    <%= form_with model: cart_item do |f| %>
       <%= f.select :amount, *[1..10] %>
       <%= f.submit '変更' %>
     <% end %>
