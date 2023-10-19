@@ -1,7 +1,17 @@
+
 <p>ジャンル検索</p>
-<% @genre.each do |genre| %>
+<% @genres.each do |genre| %>
 <span><%= genre.name %></span>
 <% end %>
 <p>ようこそ、ながのCAKEへ！</br>このサイトは、ケーキ販売のECサイトになります。</br>会員でない方も商品の閲覧はできますが、</br>購入には会員登録が必要になります。</p>
 
+<div>
 <h2>新着商品</h2>
+ <% @items.each do |item| %>
+ <%= link_to item_path(item.id), class: 'text-dark btn-default' do %>
+  <%= image_tag item.get_image(100,100) %>
+  <%= item.name %>
+  <p>￥<%= item.with_tax_price %></p>
+  <% end %>
+ <% end %>
+ </div>

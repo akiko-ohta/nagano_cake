@@ -1,6 +1,6 @@
 <h3>マイページ</h3>
 <h4><strong>登録情報</strong></h4>
-<%= link_to customers_edit_path, class: 'text-decoration-none text-light btn-success' do %>
+<%= link_to edit_customers_path(@customer.id), class: 'text-decoration-none text-light btn-success' do %>
   <span>編集する</span>
 <% end %>
 <table class="table table-bordered">
@@ -31,3 +31,11 @@
  </tr>
 </thead>
 </table>
+<h4>配送先</h4>
+<%= link_to addresses_path, class: 'text-decoration-none text-light btn-primary' do %>
+  <span>一覧を見る</span>
+<% end %>
+<h4>注文履歴</h4>
+<%= link_to orders_path, class: 'text-decoration-none text-light btn-primary' do %>
+  <span>一覧を見る</span>
+<% end %>

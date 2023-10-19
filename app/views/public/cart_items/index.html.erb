@@ -1,6 +1,6 @@
 <div>
 <h2>ショッピングカート</h2>
-  <%= link_to destroy_all_cart_items_path, method: :delete, class: 'btn text-decoration-none text-light btn-danger btn-sm' do %>
+  <%= link_to destroy_all_cart_items_path(customer.id), method: :delete, class: 'btn text-decoration-none text-light btn-danger btn-sm' do %>
       <span>カートを空にする</span>
   <% end %>
 <% @cart_items.each do |cart_item| %>
