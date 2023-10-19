@@ -1,6 +1,6 @@
 <div>
 <h2>ショッピングカート</h2>
-  <%= link_to destroy_all_cart_items_path(customer.id), method: :delete, class: 'btn text-decoration-none text-light btn-danger btn-sm' do %>
+  <%= link_to destroy_all_cart_items_path, method: :delete, class: 'btn text-decoration-none text-light btn-danger btn-sm' do %>
       <span>カートを空にする</span>
   <% end %>
 <% @cart_items.each do |cart_item| %>
@@ -12,9 +12,15 @@
       <%= f.submit '変更' %>
     <% end %>
   <%= cart_item.subtotal %>
-  <%= @total %>
   <%= link_to cart_item_path(cart_item.id), method: :delete, class: 'btn text-decoration-none text-light btn-danger btn-sm' do %>
     <span>削除する</span>
   <% end %>
 <% end %>
+<%= link_to items_path, class: 'btn text-decoration-none text-light btn-primary btn-sm' do %>
+    <span>買い物を続ける</span>
+  <% end %>
+<%= @total %>
+<%= link_to new_order_path, class: 'btn text-decoration-none text-light btn-success btn-sm' do %>
+    <span>情報入力に進む</span>
+  <% end %>
 </div>

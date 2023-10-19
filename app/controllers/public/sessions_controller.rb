@@ -33,9 +33,9 @@ class Public::SessionsController < Devise::SessionsController
     return if !@customer
 
     if @customer.valid_password?(params[:customer][:password])
-      return if @customer.is_active = true
+      return if @customer.is_active == true
     　else
-    　 render "registrations/new"
+    　 redirect_to new_customer_registration_path
     end
   end
 end

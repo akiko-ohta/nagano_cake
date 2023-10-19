@@ -6,6 +6,6 @@
   <span>退会しない</span>
 <% end %>
 
-<%= link_to withdraw_customers_path, class: 'text-decoration-none text-light btn-danger' do %>
+<%= link_to withdraw_customers_path, method: :patch, class: 'text-decoration-none text-light btn-danger', data: {confirm: "本当に退会しますか？"} do %>
   <span>退会する</span>
 <% end %>

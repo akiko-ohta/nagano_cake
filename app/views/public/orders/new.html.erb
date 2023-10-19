@@ -1,2 +1,20 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<h2>注文情報入力</h2>
+ <%= form_with model: @order do |f| %>
+  <label>支払方法</label>
+    <%= f.radio_button :payment_method, "credit_card" %>
+    <%= f.label :payment_method_credit_card, "クレジットカード" %>
+    <%= f.radio_button :payment_method, "transfer" %>
+    <%= f.label :payment_method_transfer, "銀行振込" %>
+  <label>お届け先</label>
+    <%= f.radio_button :addres_id, %>
+    <%= f.label :address_id
+    <%= f.radio_button :addres_id %>
+    <%= f.radio_button :addres_id %>
+    <label>郵便番号（ハイフンなし）</label>
+     <%= f.text_field :sipping_postal_code %>
+    <label>住所</label>
+      <%= f.text_field :sipping_addres %>
+    <label>宛名</label>
+      <%= f.text_field :sipping_name %>
+    <%= f.submit "確認画面へ進む" %>
+  <% end %>
