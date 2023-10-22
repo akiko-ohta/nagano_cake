@@ -1,2 +1,12 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<h2>注文情報確認</h2>
+<% @cart_items.each do |cart_item| %>
+  <%= image_tag cart_item.item.get_image(50,50) %>
+  <%= cart_item.item.name %>
+  <%= cart_item.item.with_tax_price %>
+  <%= cart_item.amount %>
+  <%= cart_item.subtotal %>
+<% end %>
+<%= @total %>
+
+<span><strong>支払方法</strong></span>
+<span><strong>お届け先</strong></span>
