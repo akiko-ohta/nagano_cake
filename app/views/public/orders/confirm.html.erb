@@ -1,12 +1,29 @@
 <h2>注文情報確認</h2>
-<% @cart_items.each do |cart_item| %>
+<div>
+  <% @cart_items.each do |cart_item| %>
   <%= image_tag cart_item.item.get_image(50,50) %>
   <%= cart_item.item.name %>
   <%= cart_item.item.with_tax_price %>
   <%= cart_item.amount %>
   <%= cart_item.subtotal %>
 <% end %>
+<p>800</p>
 <%= @total %>
+<%= @total += 800 %>
+</div>
 
 <span><strong>支払方法</strong></span>
+<%= @order.payment_method_i18n %>
 <span><strong>お届け先</strong></span>
+<%= @order.shipping_postal_code %>
+<%= @order.shipping_address %>
+<%= @order.shipping_name %>
+
+<%= form_with model: @order do |f| %>
+  <%= hidden_field :payment_method, :valu => @order.payment_method %>
+  <%= hidden_field :shipping_postal_code, :valu => @order.shipping_postal_code %>
+  <%= hidden_field :shipping_address, :valu => @order.shipping_address %>
+  <%= hidden_field :shipping_name, :valu => @order.shipping_name %>
+  <%= hidden_field :amount_bill, :valu => @order.amount_bill %>
+  <%= submit_tag "注文を確定する", class: "btn btn-success" %>
+<% end %>
