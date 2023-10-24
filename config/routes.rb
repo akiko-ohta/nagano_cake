@@ -2,14 +2,6 @@ Rails.application.routes.draw do
 
   root to: "public/homes#top"
 
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-  sessions: "admin/sessions"
-  }
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: "public/sessions"
-  }
-
   scope module: :public do
   resources :items, only: [:index, :show]
   resource :customers, only: [:edit, :update]
@@ -21,7 +13,7 @@ Rails.application.routes.draw do
   post "orders/confirm" => "orders#confirm"
   get "orders/complete" => "orders#complete"
   resources :orders, only: [:new, :create, :index, :show]
-  resources :addresses
+  resources :addresses, only: [:new, :create, :edit, :update, :index]
   get '/about' => "homes#about", as: "homes/about"
 end
 
@@ -32,5 +24,12 @@ end
     resources :orders, only: [:show]
     resources :genres, only: [:new, :create, :edit, :update, :index, :show]
   end
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+  sessions: "admin/sessions"
+  }
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: "public/sessions"
+  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal}
+    @amount_bill = @total + "800".to_i
     @order = Order.new(order_params)
     return if params[:order][:select_address] == "2"
       if params[:order][:select_address] == "0"
@@ -26,6 +27,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
+    @cart_items = current_customer.cart_items.all
     @cart_items.each do |cart_item|
       OrderDetail.create(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount)
     end
@@ -34,15 +36,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders.all
   end
 
   def show
-  end
-
-  def amount_bill
-    cart_items = current_customer.cart_items.all
-    total = cart_items.inject(0) { |sum, item| sum + item.subtotal}
-    total += 800
+    @order = current_customer.orders.find(params[:id])
+    @order_details = @order.order_details.all
+    @total = @order_details.inject(0) { |sum, order_detail| sum + order_detail.subtotal}
+    @order_items = @order.order_details.all
   end
 
   private

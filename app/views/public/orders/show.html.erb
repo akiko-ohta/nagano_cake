@@ -1,2 +1,17 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h2>注文履歴詳細</h2>
+  <h3>注文情報</h3>
+    <%= @order.created_at.strftime('%Y/%m/%d') %>
+    <%= @order.shipping_postal_code %>
+    <%= @order.shipping_address %>
+    <%= @order.shipping_name %>
+    <%= @order.payment_method_i18n %>
+  <h3>請求情報</h3>
+    <%= @total %>
+    <p>800</p>
+    <%= @order.amount_bill %>
+  <h3>注文内容</h3>
+    <% @order_items.each do |item| %>
+    <%= item.item.name %>
+    <%= item.item.with_tax_price %>
+    <%= item.amount %>
+  <% end %>
