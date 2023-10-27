@@ -1,17 +1,38 @@
-
-<p>ジャンル検索</p>
-<% @genres.each do |genre| %>
-<span><%= genre.name %></span>
-<% end %>
-<p>ようこそ、ながのCAKEへ！</br>このサイトは、ケーキ販売のECサイトになります。</br>会員でない方も商品の閲覧はできますが、</br>購入には会員登録が必要になります。</p>
-
-<div>
-<h2>新着商品</h2>
- <% @items.each do |item| %>
- <%= link_to item_path(item.id), class: 'text-dark btn-default' do %>
-  <%= image_tag item.get_image(100,100) %>
-  <%= item.name %>
-  <p>￥<%= item.with_tax_price %></p>
-  <% end %>
- <% end %>
- </div>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/items/genre', genres: @genres, genre: @genre %>
+    </div>
+    <div class = "col-9">
+      <%= image_tag '27654381_m', class: 'img-src img-fluid card-img' %>
+      <div class="card-img-overlay d-flex">
+        <div class="m-auto">
+          <h5>ようこそ、ながのCAKEへ！</br>このサイトは、ケーキ販売のECサイトになります。</br>会員でない方も商品の閲覧はできますが、</br>購入には会員登録が必要になります。</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-3">
+    </div>
+    <div class = "col-9">
+    <h3 class="my-3"><strong>新着商品</strong></h3>
+      <div class="row">
+        <% @items.each do |item| %>
+          <%= link_to item_path(item.id), class: 'pl-4 text-dark btn-default' do %>
+            <%= image_tag item.get_image(100,100) %></br>
+            <%= item.name %></br>
+            <p>￥<%= item.with_tax_price %></p>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col text-right">
+          <%= link_to items_path, class: 'text-decoration btn-default' do %>
+            <span>すべての商品を見る></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

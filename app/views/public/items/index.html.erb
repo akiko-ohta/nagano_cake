@@ -1,10 +1,22 @@
-<div>
-<h2>商品一覧</h2>
- <% @items.each do |item| %>
- <%= link_to item_path(item.id), class: 'text-dark btn-default' do %>
-  <%= image_tag item.get_image(100,100) %>
-  <%= item.name %>
-  <p>￥<%= item.with_tax_price %></p>
-  <% end %>
- <% end %>
- </div>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'genre', genres: @genres, genre: @genre %>
+    </div>
+    <div class="col-9">
+      <h3><strong>商品一覧</strong></h3>
+      <div class="row">
+        <% @items.each do |item| %>
+          <%= link_to item_path(item.id), class: 'pl-4 text-dark btn-default' do %>
+            <%= image_tag item.get_image(100,100) %></br>
+            <%= item.name %></br>
+            <p>￥<%= item.with_tax_price %></p>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>
