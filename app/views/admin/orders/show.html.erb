@@ -1,2 +1,24 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2>注文履歴詳細</h2>
+<label>購入者</label>
+  <%= link_to admin_customer_path(@order.id), class: 'text-dark  btn-default' do %>
+    <%= @order.customer.first_name %>
+    <%= @order.customer.last_name %>
+  <% end %>
+<label>注文日</label>
+  <%= @order.created_at.strftime('%Y/%m/%d') %>
+<label>配送先</label>
+  <%= @order.shipping_postal_code %>
+  <%= @order.shipping_address %>
+  <%= @order.shipping_name %>
+<label>支払方法</label>
+  <%= @order.payment_method_i18n %>
+
+  <% @order_details.each do |order_detail| %>
+    <%= order_detail.item.name %>
+    <%= order_detail.item.with_tax_price %>
+    <%= order_detail.amount %>
+    <%= order_detail.subtotal %>
+<% end %>
+  <%= @total %>
+  <p>800</p>
+  <%= @order.amount_bill %>

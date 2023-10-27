@@ -43,7 +43,6 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.find(params[:id])
     @order_details = @order.order_details.all
     @total = @order_details.inject(0) { |sum, order_detail| sum + order_detail.subtotal}
-    @order_items = @order.order_details.all
   end
 
   private

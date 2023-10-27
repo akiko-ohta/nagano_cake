@@ -10,8 +10,8 @@
     <p>800</p>
     <%= @order.amount_bill %>
   <h3>注文内容</h3>
-    <% @order_items.each do |item| %>
-    <%= item.item.name %>
-    <%= item.item.with_tax_price %>
-    <%= item.amount %>
+    <% @order_details.each do |order_detail| %>
+    <%= order_details.item.name %>
+    <%= order_details.item.with_tax_price %>
+    <%= order_details.amount %>
   <% end %>

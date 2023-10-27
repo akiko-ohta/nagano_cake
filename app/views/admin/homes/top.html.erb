@@ -1,2 +1,11 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h2>注文履歴一覧</h2>
+<% @orders.each do |order| %>
+  <%= link_to admin_order_path(order.id), class: 'text-dark  btn-default' do %>
+    <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+  <% end %>
+  <%= order.customer.first_name %>
+  <%= order.customer.last_name %>
+<% end %>
+<% @order_details.each do |order_detail| %>
+  <% order_detail.amount %>
+<% end %>
