@@ -1,11 +1,25 @@
-<div>
-<%= image_tag @item.get_image(100,100) %>
-<%= @item.name %>
-<%= @item.introduction %>
-<p>￥<%= @item.with_tax_price %></p>
-<%= form_with model: @cart_item do |f| %>
-  <%= f.hidden_field :item_id, :value => @item.id %>
-  <%= f.select :amount, *[1..10] %>
-  <%= f.submit 'カートに入れる' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render partial: 'genre', locals: {genres: @genres, genre: @genre} %>
+    </div>
+    <div class="col-4">
+      <%= image_tag @item.get_image(300,200) %>
+    </div>
+    <div class="col-5">
+      <h4 class="mb-3"><strong><%= @item.name %></strong></h4>
+      <p class="mb-5"><%= @item.introduction %></p>
+      <h5 class="d-inline">￥<%= @item.with_tax_price %></h5>
+      <span class="d-inline-block mb-4">(税込)</span>
+      <%= form_with model: @cart_item do |f| %>
+      <div class="d-inline">
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.select :amount, *[1..10], class: "custom-select custom-select-lg", prompt: "個数選択" %>
+      </div>
+      <div class="d-inline-block ml-4">
+        <%= f.submit 'カートに入れる', class: "btn btn-success text-light" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
