@@ -3,11 +3,11 @@
 class Admin::SessionsController < Devise::SessionsController
 
   def after_sign_in_path(resource)
-    homes_top_path
+    admin_homes_top_path
   end
 
   def after_sign_out_pth(resource)
-    sessions_new_path
+    new_admin_session_path
   end
   # before_action :configure_sign_in_params, only: [:create]
 
