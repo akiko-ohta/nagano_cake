@@ -3,19 +3,20 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
 
   scope module: :public do
-  resources :items, only: [:index, :show]
-  resource :customers, only: [:edit, :update]
-  get "customers/my_page" => "customers#show", as: "customers/show"
-  get "customers/confirm_withdraw" => "customers#confirm_withdraw"
-  patch "customers/withdraw" => "customers#withdraw"
-  delete "cart_items/dastroy_all" => "cart_items#destroy_all"
-  resources :cart_items, only: [:create, :index, :update]
-  post "orders/confirm" => "orders#confirm"
-  get "orders/complete" => "orders#complete"
-  resources :orders, only: [:new, :create, :index, :show]
-  resources :addresses, only: [:new, :create, :edit, :update, :index]
-  get '/about' => "homes#about", as: "homes/about"
-end
+   resources :items, only: [:index, :show]
+    resource :customers, only: [:edit, :update]
+    get "customers/my_page" => "customers#show", as: "customers/show"
+    get "customers/confirm_withdraw" => "customers#confirm_withdraw"
+    patch "customers/withdraw" => "customers#withdraw"
+    delete "cart_items/dastroy_all" => "cart_items#destroy_all"
+    resources :cart_items, only: [:create, :index, :update]
+    post "orders/confirm" => "orders#confirm"
+    get "orders/complete" => "orders#complete"
+    resources :orders, only: [:new, :create, :index, :show]
+    resources :addresses, only: [:new, :create, :edit, :update, :index]
+    resources :genres, only: [:show]
+    get '/about' => "homes#about", as: "homes/about"
+  end
 
   namespace :admin do
     get "/" => "homes#top", as: "homes/top"
@@ -24,6 +25,7 @@ end
     resources :orders, only: [:show]
     resources :genres, only: [:new, :create, :edit, :update, :index, :show]
   end
+
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
   }

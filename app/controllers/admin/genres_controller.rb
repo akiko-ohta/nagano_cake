@@ -1,6 +1,4 @@
 class Admin::GenresController < ApplicationController
-  def new
-  end
 
   def create
     genre = Genre.new(genre_params)
@@ -18,15 +16,9 @@ class Admin::GenresController < ApplicationController
     redirect_to admin_genres_path
   end
 
-  def show
-  end
-
   def index
     @genre = Genre.new
     @genres = Genre.all
-  end
-
-  def unvailable
   end
 
   private

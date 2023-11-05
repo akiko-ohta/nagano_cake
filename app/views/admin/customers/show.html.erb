@@ -1,28 +1,53 @@
-<h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h2>
-<table class="table">
-    <tbody>
+<div class="container">
+  <div class="row">
+    <h4 class="bg-light px-3 my-3"><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h4>
+  </div>
+  <div class="row">
+    <table class="table table-borderless">
       <tr>
-          <th scope="row">会員ID</th>
-          <th scope="row">氏名</th>
-          <th scope="row">フリガナ</th>
-          <th scope="row">郵便番号</th>
-          <th scope="row">住所</th>
-          <th scope="row">電話番号</th>
-          <th scope="row">メールアドレス</th>
-          <th scope="row">会員ステータス</th>
-          <td><%= @customer.id %></td>
-          <td><%= @customer.first_name %><%= @customer.last_name %></td>
-          <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
-          <td><%= @customer.postal_code %></td>
-          <td><%= @customer.address %></td>
-          <td><%= @customer.telephone_number %></td>
-          <td><%= @customer.is_active %></td>
-        </tr>
-    </tbody>
-  </table>
-  <%= link_to edit_admin_customer_path(@customer.id), class: 'text-light btn-success' do %>
-    <span>編集する</span>
-  <% end %>
-  <%= link_to admin_order_path, class: 'text-light btn-primary' do %>
-    <span>注文履歴一覧を見る</span>
-  <% end %>
+        <th>会員ID</th>
+        <td><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td><%= @customer.first_name %><%= @customer.last_name %></td>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <td><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= @customer.postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @customer.telephone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <td><%= @customer.is_active %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col text-right">
+      <%= link_to edit_admin_customer_path(@customer.id), class: 'btn btn-success' do %>
+        <span>編集する</span>
+      <% end %>
+    </div>
+    <div class="col">
+      <%= link_to admin_order_path, class: 'btn btn-primary' do %>
+        <span>注文履歴一覧を見る</span>
+      <% end %>
+    </div>
+  </div>
+</div>

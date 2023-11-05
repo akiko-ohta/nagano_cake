@@ -6,7 +6,7 @@
     <div class="col text-right ">
       <%= link_to new_admin_item_path do %>
         <div class="btn btn-light" style="width: 45px; height: 45px; border-radius: 50%;">
-          <span class="text-decoration-none text-dark" style="font-size: 35px;">+</span>
+          <p style="font-size: 20px;">+</p>
         </div>
       <% end %>
     </div>
@@ -42,5 +42,10 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-3 text-center">
+      <%= paginate @items %>
+    </div>
   </div>
 </div>
