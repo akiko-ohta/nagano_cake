@@ -9,7 +9,7 @@
     <div class="col-5">
       <h4 class="mb-3"><strong><%= @item.name %></strong></h4>
       <p class="mb-5"><%= @item.introduction %></p>
-      <h5 class="d-inline">￥<%= @item.with_tax_price %></h5>
+      <h5 class="d-inline">￥<%= @item.with_tax_price.to_s(:delimited) %></h5>
       <span class="d-inline-block mb-4">(税込)</span>
       <%= form_with model: @cart_item do |f| %>
       <div class="d-inline">
