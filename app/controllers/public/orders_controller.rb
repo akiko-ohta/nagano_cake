@@ -26,13 +26,20 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.save
-    @cart_items = current_customer.cart_items.all
-    @cart_items.each do |cart_item|
-      OrderDetail.create(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount)
+    if @order.save
+       @cart_items = current_customer.cart_items.all
+       @cart_items.each do |cart_item|
+         OrderDetail.create(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount)
+       end
+       current_customer.cart_items.destroy_all
+       redirect_to orders_complete_path
+    else
+      @cart_items = current_customer.cart_items.all
+      @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal}
+      @amount_bill = @total + "800".to_i
+      @order = Order.new(order_params)
+      render :confirm
     end
-    current_customer.cart_items.destroy_all
-    redirect_to orders_complete_path
   end
 
   def index

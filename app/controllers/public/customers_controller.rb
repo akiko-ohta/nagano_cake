@@ -9,8 +9,12 @@ class Public::CustomersController < ApplicationController
 
   def update
     customer = current_customer
-    customer.update(customer_params)
-    redirect_to customers_show_path
+    if customer.update(customer_params)
+       redirect_to customers_show_path
+    else
+      @customer = current_customer
+      render :edit
+    end
   end
 
   def confirm_withdraw

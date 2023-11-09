@@ -28,7 +28,13 @@
               <% end %>
             </td>
             <td><%= customer.email %></td>
-            <td><%= customer.is_active %></td>
+            <td>
+              <% if customer.is_active == "有効" %>
+                <span class="text-success"><strong><%= customer.is_active %></strong></span>
+              <% else %>
+                <span class="text-secondary"><strong><%= customer.is_active %></strong></span>
+              <% end %>
+              </td>
           </tr>
         <% end %>
       </tbody>
