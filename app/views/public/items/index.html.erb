@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <%= render partial: 'genre', locals: {genres: @genres, genre: @genre} %>
+      <%= render partial: 'genre', locals: {genres: @genres, genre: @genre, genre_name: params[:genre_name]} %>
     </div>
     <div class="col-9">
       <h3><strong>商品一覧</strong></h3>
