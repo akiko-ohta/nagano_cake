@@ -12,7 +12,7 @@
           <% @genre.items.each do |item| %>
             <div class="col-3">
               <%= link_to item_path(item.id), class: 'pl-4 text-dark btn-default' do %>
-                <%= image_tag item.get_image(100,100) %></br>
+                <%= image_tag item.get_image(200,100) %></br>
                 <%= item.name %></br>
                 <p>￥<%= item.with_tax_price.to_s(:delimited) %></p>
               <% end %>
@@ -27,7 +27,7 @@
           <% @items.each do |item| %>
             <div class="col-3">
               <%= link_to item_path(item.id), class: 'pl-4 text-dark btn-default' do %>
-                <%= image_tag item.get_image(100,100) %>
+                <%= image_tag item.get_image(200,100) %>
                 <p class="mb-0"><%= item.name %></p>
                 <p class="mt-0">￥<%= item.with_tax_price.to_s(:delimited) %></p>
               <% end %>

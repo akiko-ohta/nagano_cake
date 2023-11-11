@@ -43,7 +43,7 @@
   </div>
   <div class="row">
     <div class="col-2">
-      <%= link_to items_path, class: 'btn text-decoration-none text-light btn-primary' do %>
+      <%= link_to root_path, class: 'btn text-decoration-none text-light btn-primary' do %>
         <span>買い物を続ける</span>
       <% end %>
     </div>
@@ -60,8 +60,10 @@
   </div>
   <div class="row">
     <div class="col-6 offset-3 mt-5 text-center">
-      <%= link_to new_order_path, class: 'btn text-decoration-none text-light btn-success' do %>
-        <span>情報入力に進む</span>
+      <% if @cart_items.present? %>
+        <%= link_to new_order_path, class: 'btn text-decoration-none text-light btn-success' do %>
+          <span>情報入力に進む</span>
+        <% end %>
       <% end %>
     </div>
   </div>
